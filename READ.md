@@ -7,12 +7,12 @@ author : Team 2
 # COVID-19 Report
 
 ## Team Members
-Kalyani Goyal  
-Pulaksh Garg  
-Rahul Baviskar  
-Raj Hansini Khoiwal  
-Raj Jagtap  
-Rajat Kumar  
+Kalyani Goyal - 170010009 
+Pulaksh Garg - 170010015
+Rahul Baviskar - 170010004
+Raj Hansini Khoiwal - 170010014
+Raj Jagtap - 170030004
+Rajat Kumar - 1913105  
 
 ## Table Of Contents
 - [Introduction](#Introduction)
@@ -131,7 +131,7 @@ Formula for calculation of TF_IDF matrix is given below:
 
 * where <img src="https://render.githubusercontent.com/render/math?math=$tf_{dt}$" > is the term frequency 
 * *D* is the total number of documents
-* <img src="https://render.githubusercontent.com/render/math?math=$d_{ft}$" > is the total number of documents int he in the which the term occurs. 
+* <img src="https://render.githubusercontent.com/render/math?math=$d_{ft}$" > is the total number of documents in the corpus   in which the term occurs. 
 ### Example run
 * The query given to the model is "What is the evidence that livestock could be infected (field surveillance, genetic sequencing, receptor binding) Evidence of whether farmers are infected, and whether farmers could have played a role in the origin."
 * The results generated are as follows:
