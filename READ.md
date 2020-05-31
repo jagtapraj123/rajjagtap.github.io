@@ -129,9 +129,9 @@ Formula for calculation of TF_IDF matrix is given below:
 <br>
 
 
-* where <img src="https://render.githubusercontent.com/render/math?math=$tf_{dt}$" > is the term frequency of the term
+* where <img src="https://render.githubusercontent.com/render/math?math=$tf_{dt}$" > is the term frequency 
 * *D* is the total number of documents
-* <img src="https://render.githubusercontent.com/render/math?math=$d_{ft}$" > is the total number of documents in the which the word occurs. 
+* <img src="https://render.githubusercontent.com/render/math?math=$d_{ft}$" > is the total number of documents int he in the which the term occurs. 
 ### Example run
 * The query given to the model is "What is the evidence that livestock could be infected (field surveillance, genetic sequencing, receptor binding) Evidence of whether farmers are infected, and whether farmers could have played a role in the origin."
 * The results generated are as follows:
@@ -393,6 +393,11 @@ In COVID-19 dataset, <img src="https://render.githubusercontent.com/render/math?
 4. Not multilingual, works only for English sentences.
 
 ### LDA
+- There are many benefits of using LDA, it is a soft grouping method that is any document can belong to any number of topics and hence the relationships between words and documents is more fairly captured as compared to other methods. It will take into account synonymy, polysemy and contexts.
+- By changing parameters to the LDA function, we can observe the changes in the topics that are generated and arrive at the parameters that are best fit for our model. We tested the dataset on number of topics, where we found that as we increase the number of topics, we arrive at a better description for our dataset but the overlaps between the topics increase with the increasing number of topics.
+- Decreasing the number of dictionary words in the corpus dramatically decreases the computational time of the model.
+
+
 #### Pros
 1. Finds topic relationships between different documents
 2. LDA is a probabilistic model capable of expressing uncertainty about the placement of topics across texts and the assignment of words to topics
@@ -401,10 +406,6 @@ In COVID-19 dataset, <img src="https://render.githubusercontent.com/render/math?
 1. Computationally expensive
 2. Cannot be used for hard clustering documents into topics
 
-
-- There are many benefits of using LDA, it is a soft grouping method that is any document can belong to any number of topics and hence the relationships between words and documents is more fairly captured as compared to other methods. It will take into account synonymy, polysemy and contexts.
-- By changing parameters to the LDA function, we can observe the changes in the topics that are generated and arrive at the parameters that are best fit for our model. We tested the dataset on number of topics, where we found that as we increase the number of topics, we arrive at a better description for our dataset but the overlaps between the topics increase with the increasing number of topics.
-- Decreasing the number of dictionary words in the corpus dramatically decreases the computational time of the model.
 
 ## Experimental Results Comparison
 Highest ranked Research Papers for a question, "What do we know about virus genetics, origin, and evolution? What do we know about Real-time tracking of whole genomes?" using different methods were found to be:  
@@ -427,11 +428,14 @@ Highest ranked Research Papers for a question, "What do we know about virus gene
 > Used TF-IDF vectorizer and PCA to find clusters of documents using K-Means Clustering  
 
 - Mohit Iyer et al., Deep Unordered Composition Rivals Syntactic Methods for Text Classification, 2015  
-> This model, the deep averaging network (DAN), works in three simple steps:
+> This model, the deep averaging network (DAN), works in three simple steps: 
+> - take the vector average of the embeddings associated with an input sequence of tokens  
+> - pass that average through one or more feedforward layers  
+> - perform (linear) classification on the final layer’s representation  
 
 
 ## Conclusion
-Different methods that were taught in the course were applied and on careful analysis, pros and cons of each method were studied upon. Some methods were principle techniques while some were statistical based methods. All of these were helpful in retrieval of information from the raw corpus and give us the relevant answers to the corresponding questions. In terms of comparison we can't state that X model is the solution approach to each problem. Every method has it's own merits which are unique to the problem. 
+Different methods that were taught in the course were applied and on careful analysis, pros and cons of each method were studied upon. Some methods were principle techniques while some were statistical based methods. All of these were helpful in retrieval of information from the raw corpus and give us the relevant answers to the corresponding questions. In terms of comparison we can't state that a specific model is the solution approach to each problem. Every method has it's own merits which are unique to the problem. 
 
 ## References
 - Mohit Iyer et al., Deep Unordered Composition Rivals Syntactic Methods for Text Classification, 2015  
@@ -442,48 +446,4 @@ Different methods that were taught in the course were applied and on careful ana
 - https://www.kaggle.com/ivanegapratama/covid-eda-initial-exploration-tool  
 - https://towardsdatascience.com/comparing-text-summarization-techniques-d1e2e465584e
 
-<!-- 
 
-# small tutorial on markdown
-# Heading 1
-## Heading 2
-### Heading 3
-###### Heading 6
-
-Writing Scripts
-```python
-def haha(x):
-	return x+2
-	
-a = 10
-print("Hello world")
-```
-* Point 
-- Point
-	- inner point
-		- inner inner point
-
-1. one
-2. two
-3. three
-
-*Italic*
-**Bold**
-***Bold Italic***
-
-[Link](google.com)
-
-Table -
-|Col 1|Col 2|
-|--|--|
-| Raj | 170030004 |
-|Pulaksh| 170010014|
-
-> Note : Make note with '>'
-
-Write equation using latex format
-$$ \alpha = \sum_{i=0}^k \beta_i$$
-
-
-
- -->
