@@ -69,7 +69,7 @@ Duplicates are found based on pairs (*abstract*, *body_text*) or (*abstract*, *f
 
 We use ```text_filtering``` function to 
 1. Remove text inside [] and () as it is most likely to be references and comments.
-2. Filter only alphanumeric characters in text as we cannot use $\alpha , \beta, \sum$ etc. special characters while applying methods below.
+2. Filter only alphanumeric characters in text as we cannot use <img src="https://render.githubusercontent.com/render/math?math=$\alpha , \beta, \sum$" > etc. special characters while applying methods below.
 3. Remove \n and \t.
 4. Remove extra spaces.
 5. Lowercase all the characters.
@@ -85,7 +85,7 @@ If the language is detectable and is English then only select the document.
 > dataframe ---> remove_small_papers ---> dataset
 
 We use ```remove_small_papers``` function to remove small papers from the dataset.
-We check if the filtered body text is less than $500$ chars, if yes then do not take select the document.
+We check if the filtered body text is less than 500 chars, if yes then do not take select the document.
 
 ### Generating Stopwords
 > The stop words in the model comes from three sources namely:
@@ -123,10 +123,15 @@ The library imported for TF-IDF is
 * linear_kernel
 
 Formula for calculation of TF_IDF matrix is given below:
-* $$tf\text{-}idf=tf_{dt}×log(\frac{D}{d_{ft}})$$
-* where $tf_{dt}$ is the term frequency of the term
-* D is the total number of documents
-* $d_{ft}$ is the total number of documents in the which the word occurs. 
+<center>
+<img src="https://render.githubusercontent.com/render/math?math=$tf\text{-}idf=tf_{dt} * log(\frac{D}{d_{ft}})$" >
+</center>
+<br>
+
+
+* where <img src="https://render.githubusercontent.com/render/math?math=$tf_{dt}$" > is the term frequency of the term
+* *D* is the total number of documents
+* <img src="https://render.githubusercontent.com/render/math?math=$d_{ft}$" > is the total number of documents in the which the word occurs. 
 ### Example run
 * The query given to the model is "What is the evidence that livestock could be infected (field surveillance, genetic sequencing, receptor binding) Evidence of whether farmers are infected, and whether farmers could have played a role in the origin."
 * The results generated are as follows:
@@ -169,7 +174,7 @@ Score: 0.014299794100224972	 Topic: 0.051*"cell" + 0.016*"viral" + 0.013*"protei
 ## Word as Vector
 > **Idea** : If we represent words as vectors then we can find similarity of words using vector distance metric.
 
-In this method we convert words to vectors in $n$-dimensional space. This allows us to find simiarity and difference between words mathematically based on meaning of words.
+In this method we convert words to vectors in *n*-dimensional space. This allows us to find simiarity and difference between words mathematically based on meaning of words.
 For this project we will make use of GloVe vectors mapping to convert words to vectors.
 
 ### GloVe Vectors
@@ -218,27 +223,28 @@ For this we can use Cosine Similarity as a metric of closeness.
 </center>
 <br>
 
-<!-- $$CosineSimilarity(\vec{u}, \vec{v}) = \frac{\vec{u}.\vec{v}}{||\vec{u}||*||\vec{v}||}$$ -->
 
 If keywords of question and document do not match then we will get vectors which are far apart. So, they will have CosineSimilarity index <img src="https://render.githubusercontent.com/render/math?math=$\approx 0$" >
-<!-- $\approx 0$. -->
 
 On the other hand, if keywords of question and document match then we will get vectors which are close. So, they will have CosineSimilarity index <img src="https://render.githubusercontent.com/render/math?math=$\approx 1$" >
-<!-- $\approx 1$. -->
 
 Using this approach we can find similarity index *(largest to smallest)* between question and document based on their vectors.
 
-Then, we can rank each document based on the similarity score and show top <img src="https://render.githubusercontent.com/render/math?math=$k$" > documents with highest cosine similarity.
+Then, we can rank each document based on the similarity score and show top *k* documents with highest cosine similarity.
 
 
 ## KNN Approach
-> **Idea** : Using Euclidean distance to find $k$ nearest neighbours of query vector.
+> **Idea** : Using Euclidean distance to find *k* nearest neighbours of query vector.
 
 We use document vectors and query vector to find closeness of documents with question.
 
 For this we can use Euclidean Distance as a metric of distance.
 
-$$EuclideanDistance(\vec{u}, \vec{v}) = ||(\vec{u} - \vec{v})||_2^2$$
+<center>
+<img src="https://render.githubusercontent.com/render/math?math=$EuclideanDistance(\vec{u}, \vec{v}) = ||(\vec{u} - \vec{v})||_2^2$" >
+</center>
+<br>
+
 
 If we have document and query vector far apart, their euclidean distance will be big.
 
@@ -246,7 +252,7 @@ If we have document and query vector close to each other their euclidean distanc
 
 Using this approach we can rank the documents based on distance *(smallest to largest)* between question and document vectors.
 
-Then, we can show top $k$ documents.
+Then, we can show top *k* documents.
 
 
 ## 1D CNN
@@ -357,14 +363,15 @@ We analysed our models on a small subset of the dataset that consists of around 
 2. Takes time when number of documents gets larger. (currently >100k).
 3. Takes time to calculate document vectors as GloVe only has vectors for words. Hence need to take average over all words.
 
-> Both TF-IDF and word vectors approach use cosine similarity to rank documents but word vectors is better than TF-IDF.
+Both TF-IDF and word vectors approach use cosine similarity to rank documents but word vectors is better than TF-IDF.
 This is because of TF-IDF only takes only number of occurences of a word into account to give TF-IDF score. On the other hand, word vectors uses meaning of words as vectors.
 
-> Word vectors method is less computationally expensive than TF-IDF because matrix size in TF-IDF is $V*D$ but in word vectors it is $D*n$ where $D$ is number of documents, $V$ is size of vocabulary and $n$ is a decidable constant. In COVID-19 dataset, $D \approx 100,000$,$V \approx 300,000$, $n = 100$
+Word vectors method is less computationally expensive than TF-IDF because matrix size in TF-IDF is *V \* D* but in word vectors it is *D \* n* where *D* is number of documents, *V* is size of vocabulary and *n* is a decidable constant. 
+In COVID-19 dataset, <img src="https://render.githubusercontent.com/render/math?math=$D \approx 100,000$" >, <img src="https://render.githubusercontent.com/render/math?math=$V \approx 300,000$" >, <img src="https://render.githubusercontent.com/render/math?math=$n = 100$" >. So, as <img src="https://render.githubusercontent.com/render/math?math=$n \ll V$" >, time taken to run word vectors approach is much less than TF-IDF.
 
 ### 1D CNN
 #### Pros
-1. Considers word vectors for every $h$ word phrase, where $h$ is filter size. So, it captures more detail than plain word averaging.
+1. Considers word vectors for every *h* word phrase, where *h* is filter size. So, it captures more detail than plain word averaging.
 2. With multiple *channels* (filter sizes), it can capture very good details of sentences in document.
 3. Less computationally expensive as compared to  *LSTM* and *RNN*.
 
@@ -414,7 +421,10 @@ Highest ranked Research Papers for a question, "What do we know about virus gene
 
 ## Related Work 
 - Kim, Convolutional Neural Networks for Sentence Classification, 2014  
-> A series of experiments with convolutional neural networks (CNN) trained on top of pre-trained word vectors for sentence-level classification tasks. We show that a simple CNN with little hyperparameter tuning and static vectors achieves excellent results on multiple benchmarks
+> A series of experiments with convolutional neural networks (CNN) trained on top of pre-trained word vectors for sentence-level classification tasks. We show that a simple CNN with little hyperparameter tuning and static vectors achieves excellent results on multiple benchmarks  
+
+- MaksimEkin Notebook on COVID-19 Literature Clustering  
+> Used TF-IDF vectorizer and PCA to find clusters of documents using K-Means Clustering  
 
 
 ## Conclusion
