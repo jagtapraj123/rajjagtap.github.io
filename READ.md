@@ -366,7 +366,7 @@ We analysed our models on a small subset of the dataset that consists of around 
 Both TF-IDF and word vectors approach use cosine similarity to rank documents but word vectors is better than TF-IDF.
 This is because of TF-IDF only takes only number of occurences of a word into account to give TF-IDF score. On the other hand, word vectors uses meaning of words as vectors.
 
-Word vectors method is less computationally expensive than TF-IDF because matrix size in TF-IDF is *V \* D* but in word vectors it is *D \* n* where *D* is number of documents, *V* is size of vocabulary and *n* is a decidable constant. 
+Word vectors method is less computationally expensive than TF-IDF because matrix size in TF-IDF is <img src="https://render.githubusercontent.com/render/math?math=$D * V$" > but in word vectors it is <img src="https://render.githubusercontent.com/render/math?math=$D * n$" > where <img src="https://render.githubusercontent.com/render/math?math=$D$" > is number of documents, <img src="https://render.githubusercontent.com/render/math?math=$V$" > is size of vocabulary and <img src="https://render.githubusercontent.com/render/math?math=$n$" > is a decidable constant. 
 In COVID-19 dataset, <img src="https://render.githubusercontent.com/render/math?math=$D \approx 100,000$" >, <img src="https://render.githubusercontent.com/render/math?math=$V \approx 300,000$" >, <img src="https://render.githubusercontent.com/render/math?math=$n = 100$" >. So, as <img src="https://render.githubusercontent.com/render/math?math=$n \ll V$" >, time taken to run word vectors approach is much less than TF-IDF.
 
 ### 1D CNN
@@ -425,6 +425,9 @@ Highest ranked Research Papers for a question, "What do we know about virus gene
 
 - MaksimEkin Notebook on COVID-19 Literature Clustering  
 > Used TF-IDF vectorizer and PCA to find clusters of documents using K-Means Clustering  
+
+- Mohit Iyer et al., Deep Unordered Composition Rivals Syntactic Methods for Text Classification, 2015  
+> This model, the deep averaging network (DAN), works in three simple steps:
 
 
 ## Conclusion
